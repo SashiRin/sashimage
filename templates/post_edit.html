@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <form action="" method="post">
+          {% csrf_token %}
+            {{ form.as_p }}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+    </section>
+    <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
+  </main>
+{% endblock content %}

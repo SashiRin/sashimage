@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Sashi Image Blog</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
+          etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <div class="btn-group" role="group">
+          <a href="https://github.com/SashiRin" class="btn btn-social btn-github">
+            <span class="fa fa-github"></span>
+            Github</a>
+          <a href="https://twitter.com/neroldy" class="btn btn-social btn-twitter">
+            <span class="fa fa-twitter"></span>
+            Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          {% for post in post_list %}
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                {#            <img src="{{ post.thumb.url }}" alt="thumbnail" class="img-thumbnail">#}
+                <div class="thumbnail">
+                  <!-- Place the anchor tag here to cover both your caption and image -->
+                  <a href="{% url 'post_detail' post.pk %}" class="">
+                    <div class="caption">
+                      <h4 class="">{{ post.title }}</h4>
+                      <p class="">{{ post.description }}
+                      </p>
+                    </div>
+                    <img src="{{ post.thumb.url }}" alt="thumbnail" class="img-thumbnail">
+                  </a>
+                  <!-- Anchor tag ends covering both image and caption -->
+                </div>
+                <div class="card-body">
+                  <p class="card-text">{{ post.description }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'post_detail' post.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+                      <a href="{% url 'post_edit' post.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    </div>
+                    <small class="text-muted">{{ post.create_at }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
