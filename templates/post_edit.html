@@ -2,13 +2,14 @@
 
 {% block content %}
   <main>
-    <section class="jumbotron text-center">
+    <section class="jumbotron">
       <div class="container">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
             {{ form.as_p }}
           <input type="submit" value="Update" />
         </form>
+        {{ form.media }}
       </div>
     </section>
     <p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>

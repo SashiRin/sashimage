@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from markdownx.models import MarkdownxField
 
 
 class Post(models.Model):
@@ -11,7 +12,7 @@ class Post(models.Model):
     )
     thumb = models.ImageField(upload_to='thumb/')
     image = models.ImageField(upload_to='image/')
-    body = models.TextField()
+    body = MarkdownxField()
     create_at = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     def __str__(self):
