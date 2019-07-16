@@ -13,6 +13,7 @@ from .forms import PostForm
 class BlogListView(ListView):
     model = Post
     template_name = 'home.html'
+    ordering = ['-create_at']
 
 
 class BlogDetailView(DetailView):
